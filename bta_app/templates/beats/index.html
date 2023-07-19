@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Beat List</h1>
+
+{% for beat in beats %}
+  <a href="beats/{{ beat.id }}">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ beat.Name }}</span>
+      <p>Demographic: {{ beat.Demographic }}</p>
+      <p>Gender: {{ beat.Gender }}</p>
+      <p>Description: {{ beat.Description|linebreaks }}</p>
+    </div>
+  </div>
+  </a>
+{% endfor %}
+
+{% endblock %}
