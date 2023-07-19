@@ -1,7 +1,7 @@
-from django.shortcuts import render
-# from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Beat
+from django.urls import reverse
 # from .forms import BeatingForm
 
 # Create your views here.
@@ -25,12 +25,16 @@ def beats_detail(request, beat_id):
 class BeatCreate(CreateView):
     model = Beat
     fields = '__all__'
-    success_url = '/beats/{beat_id}'
+    def get_success_url(self):
+         url='/beats/beats/' + str(self.object.pk)
+         return url
 
 class BeatUpdate(UpdateView):
   model = Beat
-  choices=[(‘male’), (‘female’)] choices=, label=‘gender’
   fields = ['Name', 'Demographic', 'Gender', 'Description']
+  def get_success_url(self):
+         url='/beats/beats/' + str(self.object.pk)
+         return url
 
 class BeatDelete(DeleteView):
   model = Beat

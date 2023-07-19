@@ -27,7 +27,7 @@ class Beat(models.Model):
     ]
 
     Name = models.CharField(max_length=100)
-    Demographic = models.CharField(max_length=100, choices=Demographic_Choices)
+    Demographic = models.CharField('Demographic', choices=Demographic_Choices, default=1)
     Gender = models.CharField(max_length=100, choices=Gender_Choices)
     Description = models.TextField(max_length=250)
 
